@@ -3,6 +3,7 @@ import Homebanner from "../../Components/Homeconteiner/Homebanner";
 
 import UserContext from "../../context/UserContext";
 import Advatice from "../../Components/Addvatice/Advatice";
+import Review from "../../Components/Review/Review";
 
 function Home() {
   const { user, setuser } = useContext(UserContext);
@@ -17,6 +18,7 @@ function Home() {
       <Homebanner />
       <div className="flex flex-col gap-2">
         <Advatice />
+        <Review/>
       </div>
     </div>
   );

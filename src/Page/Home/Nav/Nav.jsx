@@ -2,21 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import logo from "/amazon.png";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
-function Nav() {
-  const navigate = useNavigate();
-  //     // item
-  //     const [contry, setContry] = useState()
-  //     useEffect(() => {
-  //         fetch('http://ip-api.com/json/?fields=61439')
-  //             .then(res => res.json())
-  //             .then(res => setContry(res?.country))
+import UserContext from "../../../context/UserContext";
 
-  //     })
-  //     // context
-  //     const {user}=useContext(UserContext)
-  //   const useritem=<>
-  //        {user?<p className='font-bold'>Logout</p>:<p className='font-bold'>Signin</p>}
-  //   </>
+function Nav() {
+  const {user,setuser} = useContext(UserContext);
+  const navigate = useNavigate();
+  //
   const vare = JSON.parse(localStorage.getItem("userdata"));
 
   const handleLogout = () => {
@@ -93,9 +84,9 @@ function Nav() {
           <div>
           <p >Hello <br /> sporsho</p>
           </div>
-          <div className="login flex flex-col">
+          <div className="login flex flex-col pr-2">
             
-            {vare ? (
+            {user ? (
               <p className="font-bold cursor-pointer" onClick={handleLogout}>
                 LogOut
               </p>

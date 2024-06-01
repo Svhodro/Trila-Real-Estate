@@ -1,47 +1,26 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Allproduct from "../../Components/AllProduct/Allproduct";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-function Properties() {
-  const [courentdata, setCorentData] = useState([]);
-  const [data, setData] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [alldata, setalldata] = useState(true);
-  const [hidden, setHidden] = useState();
-  const navigate = useNavigate();
-  useEffect(() => {
-    axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
-      setHidden("hidden");
-      setData(res.data);
-      
+function Allproduct() {
+    const [courentdata, setCorentData] = useState([]);
+    const [data, setData] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [alldata,setalldata]=useState(true)
+    const [hidden, setHidden] = useState();
+    const navigate = useNavigate();
+    useEffect(() => {
+      axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
+        setHidden("hidden");
+        setData(res.data);
+      });
     });
-  });
-  const filteredData = data.filter((data) =>
-     data.Propertylocation.toLowerCase().includes(searchQuery.toLowerCase())
-  
-  );
-useEffect(()=>{
-  searchQuery ? setalldata(false) : setalldata(true);
-})
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          placeholder="Search products..."
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-          }}
-          value={searchQuery}
-        />
-      </div>
-
-      {alldata ? <Allproduct /> :<div>
       <p className="sm:text-2xl pl-2 sm:pl-10 py-6">All Properties</p>
       <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
         {/*   ✅ Product card 1 - Starts Here 👇 */}
-        {filteredData.map((res) => {
+        {data.map((res) => {
           const handleDetails = () => {
             navigate("/private/details");
           };
@@ -103,9 +82,8 @@ useEffect(()=>{
       >
         <span className="loading loading-ring loading-lg size-56"></span>
       </div>
-      </div> }
-    </div>
-  );
+      </div>
+  )
 }
 
-export default Properties;
+export default Allproduct
