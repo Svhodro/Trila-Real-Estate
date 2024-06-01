@@ -14,6 +14,7 @@ import Properties from './Page/Properties/Properties';
 import Signin from './Page/Login/Signin';
 import Dashbord from './Page/Dashbord/Dashbord';
 import Details from './Page/Details/Details';
+import Signup from './Page/Signup/Signup';
 
 
 
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path:"/Login",
         element:<Signin/>
+      },      
+      {
+        path:"/regis",
+        element:<Signup/>
       },
       {
         path:"/*",
