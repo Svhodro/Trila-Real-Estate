@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-// import { FaShoppingCart } from "react-icons/fa";
 import logo from "/amazon.png";
-import { FiSearch } from "react-icons/fi";
-// import { FaMapLocationDot } from "react-icons/fa6";
-// import UserContext from '../../../context/UserContext';
-import { BiSolidCartAlt } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
-
 function Nav() {
   const navigate = useNavigate();
   //     // item
@@ -29,31 +23,78 @@ function Nav() {
     localStorage.clear();
     navigate("/");
   };
+  const navitem = (
+    <>
+      <li>
+        
+        <Link to='/'>
+          <p>Home</p>
+        </Link>
+      </li>
+      <li>
+       
+        <Link to='/private/properties'>
+          <p> All properties</p>
+        </Link>
+      </li>
+      <li>
+        
+        <Link to='/private/properties'>
+          <p> Dashboard</p>
+        </Link>
+      </li>
+    </>
+  );
 
   return (
     <>
-      <div className="bg-black flex justify-between w-full text-white py-2">
-        <div className="px-4 w-2/6 sm:w-1/6 flex justify-center items-center">
+     
+
+      {/* extra section on navber */}
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 text-base z-[1] font-bold p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              {navitem}
+            </ul>
+          </div>
+          <div >
           {/* logo */}
           <Link to="/">
-            <img src={logo} alt="logo" className="w-16 sm:w-32" />
+            <img src={logo} alt="logo" className="w-24 sm:w-32" />
           </Link>
         </div>
-        <div className="md:w-2/6 lg:w-3/6 sm:flex justify-center items-center hidden ">
-          {/* searchbar-part */}
-          <input
-            type="text"
-            placeholder="Type here"
-            className="input bg-slate-200 input-bordered w-full h-10 rounded-none "
-          />
-          <button className=" bg-orange-400 rounded-none  text-white h-10 px-4 py-2">
-            <FiSearch className="size-5 text-slate-950" />
-          </button>
         </div>
-        <div className="flex justify-end gap-2 sm:gap-5 px-8 w-4/6 sm:w-3/6 ">
-          {/* Login and text section */}
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 font-bold text-base">
+           {navitem}
+          </ul>
+        </div>
+        <div className="navbar-end gap-2">
+          <div>
+          <p >Hello <br /> sporsho</p>
+          </div>
           <div className="login flex flex-col">
-            <p>Hello</p>
+            
             {vare ? (
               <p className="font-bold cursor-pointer" onClick={handleLogout}>
                 LogOut
@@ -64,52 +105,10 @@ function Nav() {
               </Link>
             )}
           </div>
-          <div className="order sm:flex flex-col hidden">
-            <p>Return</p>
-            <p className="font-bold">&Order</p>
-          </div>
-          <div className="prime sm:flex flex-col hidden">
-            <p>Your</p>
-            <p className="font-bold">Prime</p>
-          </div>
-          <div className="cart flex gap-2">
-            <p>
-              <Link to={"/private/Chackout"}>
-                <BiSolidCartAlt className="size-8" />
-              </Link>
-            </p>
-            <p className="text-xl font-bold">0</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex bg-black  justify-center items-center sm:hidden ">
-        {/* searchbar-part */}
-
-        <input
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered w-full h-10 rounded-none bg-slate-300 "
-        />
-        <button className=" bg-orange-400 rounded-none  text-white h-10 px-4 py-2">
-          <FiSearch className="size-5 text-slate-950" />
-        </button>
-      </div>
-      {/* extra section on navber */}
-      <div className="flex  justify-start pl-2 items-center w-full h-10 bg-slate-800 gap-4 md:text-white ">
-        <div className="flex justify-start pl-8 items-center w-full h-10 bg-slate-800 gap-4 text-white  ">
-          <Link to="/products">
-            <div className="flex items-center gap-2q size-12">
-              <IoMenu className="size-12 " />
-              <p>All</p>
+          <div className="avatar">
+            <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
             </div>
-          </Link>
-        <div className="hidden md:flex justify-start  items-center w-full h-10 bg-slate-800 gap-4 text-white ">
-          <p>Today's Delals</p>
-          <p>Customer Service</p>
-          <p>Registry</p>
-          <p>GiftCards</p>
-          <p>Sell</p>
           </div>
         </div>
       </div>

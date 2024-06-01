@@ -1,22 +1,30 @@
-import React from 'react'
-import "./index.css"
+import React from "react";
+
 function Homebanner() {
-    return (
-
-
-
-        <div className='overflow-hidden imggas w-full'>
-           
-
-                <div className="group flex justify-center items-center relative w-full ">
-                    <img src="https://images.unsplash.com/photo-1556382363-8967ad2b37f0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className='w-full h-[300px] sm:h-[500px] md:h-[600px] ' />
-                    <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-40 group-hover:animate-shine " />
-               
+  return (
+    <div className="overflow-hidden h-[300px] sm:h-[500px]  w-full">
+      <div className="group flex justify-center items-center h-full relative w-full ">
+        <div
+          className="hero h-full"
+          style={{
+            backgroundImage:
+              "url(https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
+          }}
+        >
+          <div className="hero-overlay bg-opacity-60"></div>
+          <div className="hero-content text-center text-neutral-content">
+            <div className="max-w-md">
+              <h1 className="mb-5 text-5xl font-bold">Hii..There</h1>
+              <p className="mb-5">
+                We provide the best offer to provide the realestate site and your dream selling price
+              </p>             
             </div>
+          </div>
         </div>
-
-
-    )
+        <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-40 group-hover:animate-shine " />
+      </div>
+    </div>
+  );
 }
 
-export default Homebanner
+export default Homebanner;
