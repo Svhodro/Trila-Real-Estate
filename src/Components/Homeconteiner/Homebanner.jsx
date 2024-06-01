@@ -8,10 +8,10 @@ function Homebanner() {
           className="hero h-full"
           style={{
             backgroundImage:
-              "url(https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
+              "url(https://images.pexels.com/photos/4506270/pexels-photo-4506270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
           }}
         >
-          <div className="hero-overlay bg-opacity-60"></div>
+          <div className="hero-overlay bg-opacity-75"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
               <h1 className="mb-5 text-5xl font-bold">Hii..There</h1>

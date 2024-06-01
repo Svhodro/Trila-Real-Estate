@@ -13,6 +13,26 @@ function Signup() {
   const navigate = useNavigate();
   const {user,setuser} = useContext(UserContext);
   const notify = () => toast("Registration Sucsess! Plz login");
+  const checkPassword = (password) => {
+    // Check if the password length is at least 6 characters
+    if (password.length < 6) {
+        setalart(true)
+        return false;
+    }
+    // Check if the password contains at least one capital letter
+    if (!/[A-Z]/.test(password)) {
+        setalart(true)
+        return false;
+    }
+    // Check if the password contains at least one special character
+    if (!/[!@#$%^&*()_+]/.test(password)) {
+        setalart(true)
+        return false;
+    }
+    // All conditions met, password is valid
+    setalart(false)
+    return true;
+}
   const handleReg = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -20,24 +40,31 @@ function Signup() {
     const photourl = e.target.url.value;
     const username = e.target.name.value;
     const roll='user';
+    const valid = checkPassword(password)
     const fullinfo={email,photourl,username,roll}
     // console.log(email,password,username,photourl)
-    const auth = getAuth(app);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up 
-        const user = userCredential.user;  
-        // ...
-        axios.post('http://localhost:5000/adduser',fullinfo)
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+    if(valid){
+      const auth = getAuth(app);
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed up 
+          const user = userCredential.user;  
+          // ...
+          axios.post('http://localhost:5000/adduser',fullinfo)
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+        });
+    }
+    
        
 
   };
+  // passwor validation
+ 
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -102,6 +129,10 @@ function Signup() {
                   name="pass"
                   required
                 />
+                 {alart ? <div role="alert" className="alert alert-error py-2 my-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <span>Invalid password. </span>
+                        </div> : <h1 className='hidden'></h1>}
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>

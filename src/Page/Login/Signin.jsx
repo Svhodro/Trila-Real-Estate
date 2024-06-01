@@ -12,6 +12,7 @@ function Signin() {
 const {user,setuser}=useContext(UserContext)
     const navigate = useNavigate()
   const notify = () => toast("User Login  Sucsessfull!");
+  const errormassage = () => toast("email or password invalid");
    // context 
   const [data, setData] = useState([]);  
 
@@ -32,11 +33,13 @@ signInWithEmailAndPassword(auth, email, password)
     if (data) {
       setuser(true)
     }
+    notify()
+    navigate('/')
     // ...
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+   
+    errormassage()
   });
   // old function
   

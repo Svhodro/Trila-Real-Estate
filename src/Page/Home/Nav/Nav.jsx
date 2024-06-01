@@ -3,15 +3,17 @@ import logo from "/amazon.png";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import UserContext from "../../../context/UserContext";
+import axios from "axios";
 
 function Nav() {
-  const {user,setuser} = useContext(UserContext);
+  const {user,setroll,roll} = useContext(UserContext);
   const navigate = useNavigate();
   //
-  const vare = JSON.parse(localStorage.getItem("userdata"));
+  const vare = JSON.parse(localStorage.getItem("userData"));
 
   const handleLogout = () => {
-    localStorage.clear();
+    localStorage.clear();   
+    window.location.reload();
     navigate("/");
   };
   const navitem = (
@@ -36,6 +38,21 @@ function Nav() {
       </li>
     </>
   );
+  const [data, setData] = useState([]);
+  const [userinfo, setuserinfo] = useState([]);
+  useEffect(()=>{
+    axios.get('https://trila-backend.vercel.app/user')
+    .then(res=>{
+           setData(res.data)
+    })
+    data.map(res=>{
+      if (vare?.email==res.useremail) {
+            setuserinfo(res)
+            setroll(res.userroll)            
+      }
+    })
+   
+  })
 
   return (
     <>
@@ -80,9 +97,9 @@ function Nav() {
            {navitem}
           </ul>
         </div>
-        <div className="navbar-end gap-2">
-          <div>
-          <p >Hello <br /> sporsho</p>
+        <div className="navbar-end gap-4">
+          <div className="hidden sm:flex 1">
+          <p >Hello <br /> {userinfo?.username}</p>
           </div>
           <div className="login flex flex-col pr-2">
             
@@ -97,8 +114,8 @@ function Nav() {
             )}
           </div>
           <div className="avatar">
-            <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            <div className="w-10 rounded-full ring ring-offset-base-200 ring-offset-2">
+              <img src={userinfo?.userphoto} />
             </div>
           </div>
         </div>
