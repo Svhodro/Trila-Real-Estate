@@ -1,12 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 function Advatice() {
   const [data, setData] = useState([]);
   const [courentdata, setCorentData] = useState([]);
   const [hidden, setHidden] = useState();
   const navigate=useNavigate()
+  const {setdetails}=useContext(UserContext)
   useEffect(() => {
     axios.get("https://trila-backend.vercel.app/somestate").then((res) => {
       setHidden("hidden");
@@ -21,12 +23,13 @@ function Advatice() {
         {data.map((res) => {
           const handleDetails = () => {         
             navigate("/private/details");
+            setdetails(res)
           };
 
           return (
             <div
               className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2"
-              onClick={handleDetails}
+              
             >
               <a href="#">
                 <img
@@ -54,8 +57,12 @@ function Advatice() {
                       
                     </p>
                   </div>
+                  <div className="flex justify-start items-center">
+                    <button className="btn bg-transparent text-black" onClick={handleDetails}>details</button>
+                  </div>
                 </div>
               </a>
+              
             </div>
           );
         })}

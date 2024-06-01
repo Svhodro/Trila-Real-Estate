@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Allproduct from "../../Components/AllProduct/Allproduct";
+import UserContext from "../../context/UserContext";
 
 function Properties() {
   const [courentdata, setCorentData] = useState([]);
@@ -9,6 +10,7 @@ function Properties() {
   const [searchQuery, setSearchQuery] = useState("");
   const [alldata, setalldata] = useState(true);
   const [hidden, setHidden] = useState();
+  const { setdetails } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
     axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
@@ -46,12 +48,13 @@ function Properties() {
             {filteredData.map((res) => {
               const handleDetails = () => {
                 navigate("/private/details");
+                setdetails(res);
               };
               if (res.status == "verified") {
                 return (
                   <div
                     className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2"
-                    onClick={handleDetails}
+                  
                   >
                     <a href="#">
                       <img
@@ -90,6 +93,14 @@ function Properties() {
                           <p className="text-base  font-semibold text-black cursor-auto my-3">
                             status: {res.status}
                           </p>
+                        </div>
+                        <div className="flex justify-start items-center">
+                          <button
+                            className="btn bg-transparent text-black"
+                            onClick={handleDetails}
+                          >
+                            details
+                          </button>
                         </div>
                       </div>
                     </a>

@@ -1,20 +1,22 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 function Allproduct() {
-    const [courentdata, setCorentData] = useState([]);
-    const [data, setData] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [alldata,setalldata]=useState(true)
-    const [hidden, setHidden] = useState();
-    const navigate = useNavigate();
-    useEffect(() => {
-      axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
-        setHidden("hidden");
-        setData(res.data);
-      });
+  const [courentdata, setCorentData] = useState([]);
+  const [data, setData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [alldata, setalldata] = useState(true);
+  const [hidden, setHidden] = useState();
+  const navigate = useNavigate();
+  const { setdetails } = useContext(UserContext);
+  useEffect(() => {
+    axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
+      setHidden("hidden");
+      setData(res.data);
     });
+  });
   return (
     <div>
       <p className="sm:text-2xl pl-2 sm:pl-10 py-6">All Properties</p>
@@ -23,13 +25,11 @@ function Allproduct() {
         {data.map((res) => {
           const handleDetails = () => {
             navigate("/private/details");
+            setdetails(res);
           };
           if (res.status == "verified") {
             return (
-              <div
-                className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2"
-                onClick={handleDetails}
-              >
+              <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                 <a href="#">
                   <img
                     src={res.Propertyimage}
@@ -68,6 +68,14 @@ function Allproduct() {
                         status: {res.status}
                       </p>
                     </div>
+                    <div className="flex justify-start items-center">
+                      <button
+                        className="btn bg-transparent text-black"
+                        onClick={handleDetails}
+                      >
+                        details
+                      </button>
+                    </div>
                   </div>
                 </a>
               </div>
@@ -75,15 +83,15 @@ function Allproduct() {
           }
         })}
       </div>
-        {/* next section */}
+      {/* next section */}
 
-        <div
+      <div
         className={`w-full h-screen flex justify-center items-center ${hidden}`}
       >
         <span className="loading loading-ring loading-lg size-56"></span>
       </div>
-      </div>
-  )
+    </div>
+  );
 }
 
-export default Allproduct
+export default Allproduct;
