@@ -32,7 +32,7 @@ function Nav() {
       </li>
       <li>
         
-        <Link to='/private/properties'>
+        <Link to='/private/dashbord'>
           <p> Dashboard</p>
         </Link>
       </li>
