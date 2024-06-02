@@ -50,7 +50,7 @@ function Signup() {
           // Signed up 
           const user = userCredential.user;  
           // ...
-          axios.post('http://localhost:5000/adduser',fullinfo)
+          axios.post('https://trila-backend.vercel.app/adduser',fullinfo)
         })
         .catch((error) => {
           const errorCode = error.code;

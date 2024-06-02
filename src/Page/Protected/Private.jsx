@@ -7,20 +7,20 @@ function Private() {
   const navigate = useNavigate();
   const { user, setuser } = useContext(UserContext);
   const data = localStorage.getItem("userData");
-  if (data) {
-    setuser(true);
-  } else {
-    setuser(false);
-  }
+  useEffect(()=>{
+    if (data) {
+      setuser(true);
+    } else {
+      setuser(false);
+    }
+    
+  }) 
   if (user === true) {
     return <Outlet />;
-  } else {
-    useEffect(() => {
-      if (user === false) {
+  } else {  
         navigate("/Login");
-      }
-    });
   }
+  
 }
 
 export default Private;
