@@ -15,6 +15,10 @@ import Signin from './Page/Login/Signin';
 import Dashbord from './Page/Dashbord/Dashbord';
 import Details from './Page/Details/Details';
 import Signup from './Page/Signup/Signup';
+import Profile from './Page/Dashbord/Profile/Profile';
+import Wishlist from './Page/Dashbord/WishList/Wishlist';
+import Bougth from './Page/Dashbord/UserBougth/Bougth';
+import UserReview from './Page/Dashbord/UserReview/UserReview';
 
 
 
@@ -35,8 +39,25 @@ const router = createBrowserRouter([
           },
           {
             path:"dashbord",
-            element:<Dashbord/>
-
+            element:<Dashbord/>,
+            children:[
+              {
+                path:'profile',
+                element:<Profile/>
+              },
+              {
+                path:'wishlist',
+                element:<Wishlist/>
+              },
+              {
+                path:'userBougth',
+                element:<Bougth/>
+              },
+              {
+                path:'userreview',
+                element:<UserReview/>
+              },
+            ]
           },
           {
             path:"details",
