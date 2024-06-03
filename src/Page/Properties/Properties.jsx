@@ -37,12 +37,29 @@ function Properties() {
           className="input input-bordered w-full bg-white "
         />
       </div>
-
+      <div className="flex justify-between items-center">
+        <p className="sm:text-2xl pl-2 sm:pl-10 py-6">Properties</p>
+        <div className="dropdown dropdown-end pl-2 sm:pr-6 py-6 ">
+          <div tabIndex={0} role="button" className="btn m-1">
+            sort
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <p>$0-$2000 </p>
+            </li>
+            <li>
+              <a>$2001-$3000</a>
+            </li>
+          </ul>
+        </div>
+      </div>
       {alldata ? (
         <Allproduct />
       ) : (
         <div>
-          <p className="sm:text-2xl pl-2 sm:pl-10 py-6">All Properties</p>
           <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
             {/*   ✅ Product card 1 - Starts Here 👇 */}
             {filteredData.map((res) => {
@@ -52,10 +69,7 @@ function Properties() {
               };
               if (res.status == "verified") {
                 return (
-                  <div
-                    className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2"
-                  
-                  >
+                  <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                     <a href="#">
                       <img
                         src={res.Propertyimage}

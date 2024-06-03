@@ -6,7 +6,7 @@ function Dashbord() {
     <>
       <ul>
         <li>
-          <Link to="/private/dashbord/profile">MyProfile</Link>
+          <Link to="/private/dashbord">MyProfile</Link>
         </li>
         <li>
           <Link to="/private/dashbord/wishlist">Wishlist</Link>

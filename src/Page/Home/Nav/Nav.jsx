@@ -41,10 +41,15 @@ function Nav() {
   const [data, setData] = useState([]);
   const [userinfo, setuserinfo] = useState([]);
   useEffect(()=>{
-    axios.get('https://trila-backend.vercel.app/user')
+    try {
+      axios.get('https://trila-backend.vercel.app/user')
     .then(res=>{
            setData(res.data)
     })
+    } catch (error) {
+      
+    }
+    
     data.map(res=>{
       if (vare?.email==res.useremail) {
             setuserinfo(res)

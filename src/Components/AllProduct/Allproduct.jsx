@@ -18,8 +18,7 @@ function Allproduct() {
     });
   });
   return (
-    <div>
-      <p className="sm:text-2xl pl-2 sm:pl-10 py-6">All Properties</p>
+    <div>      
       <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
         {/*   ✅ Product card 1 - Starts Here 👇 */}
         {data.map((res) => {
