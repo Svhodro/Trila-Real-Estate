@@ -1,51 +1,50 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function Review() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios.get("https://trila-backend.vercel.app/latestreview").then((res) => {
+      setData(res.data);
+    });
+  });
+  
+
+
   return (
-    <div>
+    <div className="my-4">
       <p className="sm:text-2xl pl-2 sm:pl-10 py-6 ">Latest User review</p>
-      <div className="flex flex-wrap justify-center items-center p-4 gap-2 rounded-lg">
-      <div className="w-2/3 flex justify-center items-center dark:bg-gray-400 rounded-lg ">
-        <section className="bg-gray-800 rounded-lg p-2">
-          <div className=" px-4  mx-auto text-center lg:py-8 lg:px-6">
-            <figure className="max-w-screen-md mx-auto">
-              <svg
-                className="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600"
-                viewBox="0 0 24 27"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"
-                  fill="currentColor"
-                />
-              </svg>
-              <blockquote>
-                <p className="text-xl font-medium  md:text-2xl text-white">
-                  "the website is very helpfull to find the new and qualityfull home and state propertys for ther customers
-                  thanks for help me to buy my dream property and i will recomended the new all buyer to by for there  "
-                </p>
-              </blockquote>
-              <figcaption className="flex items-center justify-center mt-6 space-x-3">
-                <img
-                  className="w-6 h-6 rounded-full"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
-                  alt="profile picture"
-                />
-                <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-                  <div className="pr-3 font-medium text-gray-900 dark:text-white">
-                    Micheal Gough
+      <div className="flex justify-center items-center flex-wrap">
+        <div className="w-full flex justify-center items-center flex-col  gap-4 sm:gap-6">
+          {/*   ✅ Product card 1 - Starts Here 👇 */}
+          {data.map((res) => {
+            return (
+              <div className="w-full flex justify-center items-center">
+                <div className="w-2/3 flex flex-col gap-4 text-slate-900 bg-slate-200 rounded-lg p-4">
+                  {/* Profile and Rating */}
+                  <div className="flex justify justify-between">
+                    <div className="flex gap-2">
+                      <div className="w-7 h-7 text-center rounded-full bg-red-500">
+                        <img src={res.userimg} className="size-8 rounded-badge" />
+                      </div>
+                      <span className="text-lg font-bold">{res.username}</span>
+                    </div>
+                    
                   </div>
-                  <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
-                    CEO at Google
+                  <div>
+                    <p className="font-extralight text-lg">Review:</p>
+                  {res.review}
                   </div>
+                  <div>
+                  <p className="font-extralight text-lg">Property:</p>
+                  {res.title}
+                  </div>
+                  
                 </div>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-      </div>
-      
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

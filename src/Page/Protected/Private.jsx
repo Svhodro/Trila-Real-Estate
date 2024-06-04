@@ -18,7 +18,7 @@ function Private() {
   if (user === true) {
     return <Outlet />;
   } else {  
-        navigate("/Login");
+        navigate("/");
   }
   
 }

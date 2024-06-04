@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { CiMenuFries } from "react-icons/ci";
+import UserContext from "../../context/UserContext";
 
 function Dashbord() {
+const {userdata}=useContext(UserContext)
   const Normaluser = (
     <>
       <ul>
@@ -42,7 +45,7 @@ function Dashbord() {
 
   const Agent = (
     <>
-      <ul>
+      <ul className="flex gap-4 flex-col">
         <li>Profile</li>
         <li>Add Property</li>
         <li>My added properties</li>
@@ -61,16 +64,17 @@ function Dashbord() {
           <div className="user  hidden sm:flex items-center justify-center flex-col gap-4 border-b border-emerald-slate-50 py-4">
             <img
               className="w-10 rounded-full shadow-xl "
-              src="https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png"
+              src={userdata.userphoto}
             />
+
             <div className="font-bold">
              {Normaluser}
             </div>
           </div>
           <div className="sm:hidden flex justify-center items-center ">
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn m-1">
-                Click
+              <div tabIndex={0} role="button" className="btn m-1 bg-transparent border-none text-black">
+              <CiMenuFries />
               </div>
               <ul
                 tabIndex={0}

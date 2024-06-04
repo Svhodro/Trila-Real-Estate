@@ -1,9 +1,47 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function UserReview() {
+  const [hidden, setHidden] = useState();
+  const [data, setData] = useState([]);
+  const vare = JSON.parse(localStorage.getItem("userData"));
+  useEffect(() => {
+    try {
+      axios.get("https://trila-backend.vercel.app/allreview").then((res) => {
+        setHidden("hidden");
+        setData(res.data);
+      });
+    } catch (error) {}
+  });
+  const filteredData = data.filter((data) =>
+    data.useremail.toLowerCase().includes(vare.email)
+  );
   return (
-    <div>UserReview</div>
-  )
+    <div className="flex justify-center flex-col gap-2 items-center flex-wrap">
+      {filteredData.map((res) => {
+        return (
+          <div>
+            <div className="card w-96 bg-base-300 shadow-xl ">
+              <div className="card-body">
+                <h2 className="card-title">{res.title}</h2>
+                <p>Agent: {res.agent}</p>
+                <p>Review: <br /> {res.review}</p>
+                <p>Date: {res.date}/{res.time}</p>
+                <div className="card-actions justify-end">
+                  <button className="btn btn-primary">delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+      <div
+        className={`w-full h-screen flex justify-center items-center ${hidden}`}
+      >
+        <span className="loading loading-ring loading-lg size-56"></span>
+      </div>
+    </div>
+  );
 }
 
-export default UserReview
+export default UserReview;

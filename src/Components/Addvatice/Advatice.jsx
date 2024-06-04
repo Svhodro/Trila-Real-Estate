@@ -13,7 +13,9 @@ function Advatice() {
   const [hidden, setHidden] = useState();
   const navigate = useNavigate();
   const { setdetails } = useContext(UserContext);
+
   useEffect(() => {
+   
     axios.get("https://trila-backend.vercel.app/somestate").then((res) => {
       setHidden("hidden");
       setData(res.data);

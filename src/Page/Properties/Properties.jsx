@@ -13,6 +13,7 @@ function Properties() {
   const { setdetails } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
+
     axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
       setHidden("hidden");
       setData(res.data);

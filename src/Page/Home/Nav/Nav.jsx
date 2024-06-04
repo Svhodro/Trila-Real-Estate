@@ -6,33 +6,30 @@ import UserContext from "../../../context/UserContext";
 import axios from "axios";
 
 function Nav() {
-  const {user,setroll,roll} = useContext(UserContext);
+  const { user, setroll, roll, setuserdata } = useContext(UserContext);
   const navigate = useNavigate();
   //
   const vare = JSON.parse(localStorage.getItem("userData"));
 
   const handleLogout = () => {
-    localStorage.clear();   
+    localStorage.clear();
     window.location.reload();
     navigate("/");
   };
   const navitem = (
     <>
       <li>
-        
-        <Link to='/'>
+        <Link to="/">
           <p>Home</p>
         </Link>
       </li>
       <li>
-       
-        <Link to='/private/properties'>
+        <Link to="/private/properties">
           <p> All properties</p>
         </Link>
       </li>
       <li>
-        
-        <Link to='/private/dashbord'>
+        <Link to="/private/dashbord">
           <p> Dashboard</p>
         </Link>
       </li>
@@ -40,29 +37,23 @@ function Nav() {
   );
   const [data, setData] = useState([]);
   const [userinfo, setuserinfo] = useState([]);
-  useEffect(()=>{
-    try {
-      axios.get('https://trila-backend.vercel.app/user')
-    .then(res=>{
-           setData(res.data)
-    })
-    } catch (error) {
-      
-    }
-    
-    data.map(res=>{
-      if (vare?.email==res.useremail) {
-            setuserinfo(res)
-            setroll(res.userroll)            
-      }
-    })
+  useEffect(() => {
    
-  })
+    axios.get("https://trila-backend.vercel.app/user").then((res) => {
+      setData(res.data);
+    });
+
+    data.map((res) => {
+      if (vare?.email == res.useremail) {
+        setuserinfo(res);
+        setuserdata(res);
+        setroll(res.userroll);
+      }
+    });
+  });
 
   return (
     <>
-     
-
       {/* extra section on navber */}
       <div className="navbar bg-base-100">
         <div className="navbar-start">
@@ -90,24 +81,25 @@ function Nav() {
               {navitem}
             </ul>
           </div>
-          <div >
-          {/* logo */}
-          <Link to="/">
-            <img src={logo} alt="logo" className="w-24 sm:w-32" />
-          </Link>
-        </div>
+          <div>
+            {/* logo */}
+            <Link to="/">
+              <img src={logo} alt="logo" className="w-24 sm:w-32" />
+            </Link>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-bold text-base">
-           {navitem}
+            {navitem}
           </ul>
         </div>
         <div className="navbar-end gap-4">
           <div className="hidden sm:flex 1">
-          <p >Hello <br /> {userinfo?.username}</p>
+            <p>
+              Hello <br /> {userinfo?.username}
+            </p>
           </div>
           <div className="login flex flex-col pr-2">
-            
             {user ? (
               <p className="font-bold cursor-pointer" onClick={handleLogout}>
                 LogOut

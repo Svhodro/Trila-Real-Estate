@@ -1,12 +1,13 @@
 [
     {
+     
         "Propertyimage":"https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "Propertytitle":"hamel-house" ,
         "Propertylocation": "north-asia/india",
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":3000
+        "Pricerange":"2000-2300"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/1105754/pexels-photo-1105754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -15,7 +16,7 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":3000
+        "Pricerange":"2000-3000"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/11718917/pexels-photo-11718917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -24,7 +25,7 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":3000
+        "Pricerange":"2000-3500"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/5524336/pexels-photo-5524336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -33,7 +34,7 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Price range":3000
+        "Price range":"2000-3400"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/5178060/pexels-photo-5178060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -42,7 +43,7 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"pending" ,
-        "Pricerange":3000
+        "Pricerange":"2000-3000"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/8031878/pexels-photo-8031878.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -51,7 +52,7 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":3000
+        "Pricerange":"2000-3000"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/13041118/pexels-photo-13041118.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -60,7 +61,7 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":3000
+        "Pricerange":"2000-3000"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/9951999/pexels-photo-9951999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -69,7 +70,7 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":3000
+        "Pricerange":"2000-3000"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/12559018/pexels-photo-12559018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -78,7 +79,7 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":3000
+        "Pricerange":"2000-3000"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/5524237/pexels-photo-5524237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -87,6 +88,6 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":3000
+        "Pricerange":"2000-3000"
     }
 ]

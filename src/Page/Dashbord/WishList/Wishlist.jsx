@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import UserContext from "../../../context/UserContext";
 
 function Wishlist() {
+  // offer,setoffer
+  const {setoffer}=useContext(UserContext)
   const [hidden, setHidden] = useState();
   const [data, setData] = useState([]);
   const vare = JSON.parse(localStorage.getItem("userData"));
@@ -28,7 +32,9 @@ function Wishlist() {
         <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
           {/*   ✅ Product card 1 - Starts Here 👇 */}
           {filteredData.map((res) => {        
-
+                   const handleoffer=()=>{
+                    setoffer(res)
+                   }
             return (
               <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                 <a href="#">
@@ -68,6 +74,9 @@ function Wishlist() {
                       <p className="text-base  font-semibold text-black cursor-auto my-3">
                         status: {res.status}
                       </p>
+                    </div>
+                    <div>
+                      <button className="btn" onClick={handleoffer}> <Link to='/private/dashbord/Offer'>Make an offer</Link></button>
                     </div>
                   </div>
                 </a>

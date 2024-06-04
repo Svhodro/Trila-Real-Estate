@@ -19,6 +19,7 @@ import Profile from './Page/Dashbord/Profile/Profile';
 import Wishlist from './Page/Dashbord/WishList/Wishlist';
 import Bougth from './Page/Dashbord/UserBougth/Bougth';
 import UserReview from './Page/Dashbord/UserReview/UserReview';
+import Offer from './Page/Dashbord/Offer/Offer';
 
 
 
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
               {
                 path:'userreview',
                 element:<UserReview/>
+              },
+              {
+                path:'offer',
+                element:<Offer/>
               },
             ]
           },

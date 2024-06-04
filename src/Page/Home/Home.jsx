@@ -19,7 +19,6 @@ function Home() {
       <Homebanner />
       <div className="flex flex-col gap-2">
         <Advatice />
-        <Review />
         <Team />
         <div>
           <div className="diff aspect-[16/9] h-[200px]">
@@ -30,7 +29,7 @@ function Home() {
               />
               <div className="flex justify-center items-center">
                 <p className="text-2xl text-center font-bold text-white font-serif">
-                Raila realestate for the saleing property
+                  Raila realestate for the saleing property
                 </p>
               </div>
             </div>
@@ -48,6 +47,7 @@ function Home() {
             <div className="diff-resizer"></div>
           </div>
         </div>
+        <Review />
       </div>
     </div>
   );

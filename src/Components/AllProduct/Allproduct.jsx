@@ -12,6 +12,7 @@ function Allproduct() {
   const navigate = useNavigate();
   const { setdetails } = useContext(UserContext);
   useEffect(() => {
+   
     axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
       setHidden("hidden");
       setData(res.data);
