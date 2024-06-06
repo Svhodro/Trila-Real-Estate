@@ -12,9 +12,9 @@ function Nav() {
   const vare = JSON.parse(localStorage.getItem("userData"));
 
   const handleLogout = () => {
-    localStorage.clear();
-    window.location.reload();
+    localStorage.clear();    
     navigate("/");
+    window.location.reload();
   };
   const navitem = (
     <>

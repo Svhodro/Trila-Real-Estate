@@ -9,7 +9,7 @@ import app from "../../firebase/firebase";
 import axios from "axios";
 
 function Signup() {
-
+const [alart,setalart]=useState()
   const navigate = useNavigate();
   const {user,setuser} = useContext(UserContext);
   const notify = () => toast("Registration Sucsess! Plz login");

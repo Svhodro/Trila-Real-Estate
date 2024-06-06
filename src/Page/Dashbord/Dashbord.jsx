@@ -46,11 +46,11 @@ const {userdata}=useContext(UserContext)
   const Agent = (
     <>
       <ul className="flex gap-4 flex-col">
-        <li>Profile</li>
-        <li>Add Property</li>
-        <li>My added properties</li>
-        <li>My sold properties</li>
-        <li>Requested properties</li>
+        <li><Link to="/private/dashbord">Profile</Link></li>
+        <li><Link to="">Add Property</Link></li>
+        <li><Link to="">My added properties</Link></li>
+        <li><Link to="">My sold properties</Link></li>
+        <li><Link to="">Requested properties</Link></li>
       </ul>
     </>
   );
@@ -68,7 +68,8 @@ const {userdata}=useContext(UserContext)
             />
 
             <div className="font-bold">
-             {Normaluser}
+             {userdata.userroll=="user"?Normaluser:<div></div>}
+             {userdata.userroll=="agent"?Agent:<div></div>}
             </div>
           </div>
           <div className="sm:hidden flex justify-center items-center ">

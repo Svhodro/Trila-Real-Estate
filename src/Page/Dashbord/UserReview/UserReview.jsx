@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 function UserReview() {
   const [hidden, setHidden] = useState();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]);  
   const vare = JSON.parse(localStorage.getItem("userData"));
   useEffect(() => {
     try {
@@ -16,9 +16,18 @@ function UserReview() {
   const filteredData = data.filter((data) =>
     data.useremail.toLowerCase().includes(vare.email)
   );
+ 
   return (
     <div className="flex justify-center flex-col gap-2 items-center flex-wrap">
       {filteredData.map((res) => {
+        
+         
+          const handleDelete=()=>{
+            
+            const data={id:res._id}            
+            axios.delete(`https://trila-backend.vercel.app/deletereview/${res._id}`)
+          }
+      
         return (
           <div>
             <div className="card w-96 bg-base-300 shadow-xl ">
@@ -28,7 +37,7 @@ function UserReview() {
                 <p>Review: <br /> {res.review}</p>
                 <p>Date: {res.date}/{res.time}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">delete</button>
+                  <button className="btn btn-primary" onClick={handleDelete}>delete</button>
                 </div>
               </div>
             </div>

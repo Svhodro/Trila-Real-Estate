@@ -5,7 +5,7 @@ import UserContext from "../../../context/UserContext";
 
 function Wishlist() {
   // offer,setoffer
-  const {setoffer}=useContext(UserContext)
+
   const [hidden, setHidden] = useState();
   const [data, setData] = useState([]);
   const vare = JSON.parse(localStorage.getItem("userData"));
@@ -15,10 +15,7 @@ function Wishlist() {
         setHidden("hidden");
         setData(res.data);
       });
-    } catch (error) {
-      
-    }
-   
+    } catch (error) {}
   });
   const filteredData = data.filter((data) =>
     data.useremail.toLowerCase().includes(vare.email)
@@ -31,10 +28,16 @@ function Wishlist() {
       <div>
         <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
           {/*   ✅ Product card 1 - Starts Here 👇 */}
-          {filteredData.map((res) => {        
-                   const handleoffer=()=>{
-                    setoffer(res)
-                   }
+          {filteredData.map((res) => {
+            const handleoffer = () => {
+              setoffer(res);
+            };
+            const handledelete = () => {
+              const data = { id: res._id };
+              axios.delete(
+                `https://trila-backend.vercel.app/deletewish/${res._id}`
+              );
+            };
             return (
               <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                 <a href="#">
@@ -76,7 +79,15 @@ function Wishlist() {
                       </p>
                     </div>
                     <div>
-                      <button className="btn" onClick={handleoffer}> <Link to='/private/dashbord/Offer'>Make an offer</Link></button>
+                      <button className="btn" onClick={handleoffer}>
+                        {" "}
+                        <Link to="/private/dashbord/Offer">Make an offer</Link>
+                      </button>
+                    </div>
+                    <div className="my-2">
+                      <button className="btn " onClick={handledelete}>
+                        Remove
+                      </button>
                     </div>
                   </div>
                 </a>
