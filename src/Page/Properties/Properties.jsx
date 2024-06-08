@@ -20,7 +20,7 @@ function Properties() {
     });
   });
   const filteredData = data.filter((data) =>
-    data.Propertylocation.toLowerCase().includes(searchQuery.toLowerCase())
+    data?.Propertylocation?.toLowerCase().includes(searchQuery.toLowerCase())
   );
   useEffect(() => {
     searchQuery ? setalldata(false) : setalldata(true);

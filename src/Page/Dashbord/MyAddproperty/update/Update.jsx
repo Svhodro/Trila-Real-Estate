@@ -1,40 +1,28 @@
-import React, { useContext } from "react";
-import UserContext from "../../../context/UserContext";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import UserContext from "../../../../context/UserContext";
 
-function Add() {
-  const { userdata } = useContext(UserContext);
-  const notify = () => toast("Add Sucsessfully");
+function Update() {
+  const { userdata, update } = useContext(UserContext);
   const handleadd = (e) => {
     e.preventDefault();
-    // useremail
-    // username
-    // userphoto
-    // userroll
-
-
+    const title = e.target.propertytitle.value;
+    const location = e.target.location.value;
+    const img = e.target.url.value;    
+    const pricerange = e.target.price.value;
     const data = {
-      Pricerange: e.target.price.value,
-      Propertylocation: e.target.location.value,
-      Propertyimage: e.target.url.value,
-      Propertytitle: e.target.propertytitle.value,
-      Agentname: userdata.username,
-      Agentemail: userdata.useremail,
-     Agentimage:userdata.userphoto,
-      status:'pending'
+      poptitle:title,
+      proplocation:location,
+      image:img,
+      agentname:userdata.username,
+      agentemail:userdata.useremail,
+      price:pricerange
     };
+    axios.put(`https://trila-backend.vercel.app/updatestate/${update._id}`,data)
+  
     
-    try {
-      axios.post("https://trila-backend.vercel.app/addproperty",data)
-      notify()
-        
-    } catch (error) {
-      console.log(error);
-    }
-    // console.log(userdata);
   };
+
   return (
     <div>
       <div className="hero w-full min-h-screen h-full bg-base-200">
@@ -52,7 +40,7 @@ function Add() {
                 </label>
                 <input
                   type="text"
-                  placeholder="title"
+                  placeholder={update.Propertytitle}
                   className="input input-bordered"
                   name="propertytitle"
                   required
@@ -64,7 +52,7 @@ function Add() {
                 </label>
                 <input
                   type="text"
-                  placeholder="location"
+                  placeholder={update.Propertylocation}
                   className="input input-bordered"
                   name="location"
                   required
@@ -76,6 +64,7 @@ function Add() {
                 </label>
                 <input
                   type="text"
+                  placeholder={update.Propertyimage}
                   className="input input-bordered"
                   name="url"
                   required
@@ -87,6 +76,7 @@ function Add() {
                 </label>
                 <input
                   type="text"
+                  placeholder={userdata.username}
                   className="input input-bordered"
                   name="agentname"
                   readOnly
@@ -98,6 +88,7 @@ function Add() {
                 </label>
                 <input
                   type="text"
+                  placeholder={update.Pricerange}
                   className="input input-bordered"
                   name="price"
                   required
@@ -109,15 +100,15 @@ function Add() {
                 </label>
                 <input
                   type="text"
+                  placeholder={userdata.useremail}
                   className="input input-bordered"
                   name="Agentemail"
                   readOnly
                 />
-              </div>           
+              </div>
 
               <div className="form-control mt-6">
-               
-                <button className="btn btn-primary">Add property</button>
+                <button className="btn btn-primary">Update</button>
               </div>
             </form>
           </div>
@@ -126,5 +117,4 @@ function Add() {
     </div>
   );
 }
-
-export default Add;
+export default Update;

@@ -11,7 +11,7 @@ const {userdata}=useContext(UserContext)
           <div className=" h-32 overflow-hidden">
             <img
               className="w-full"
-              src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+              src="https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
             />
           </div>
@@ -25,9 +25,7 @@ const {userdata}=useContext(UserContext)
           <div className=" ">
             <div className="text-center px-14">
               <h2 className="text-gray-800 text-3xl font-bold">{userdata?.username}</h2>
-              <a
-                className="text-gray-400 mt-2 hover:text-blue-500"
-                href="https://www.instagram.com/immohitdhiman/"
+              <a   className="text-gray-400 mt-2 hover:text-blue-500"               
                 target="BLANK()"
               >
                 {userdata?.useremail}

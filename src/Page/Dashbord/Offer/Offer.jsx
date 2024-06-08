@@ -49,7 +49,7 @@ function Offer() {
 
   return (
     <div>
-      <div className="hero w-full h-screen bg-base-200">
+      <div className="hero w-full h-full bg-base-200">
         <div className="hero-content  w-3/4 flex-col-reverse ">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form
@@ -79,6 +79,7 @@ function Offer() {
                   placeholder={offer.useremail}
                   className="input input-bordered"
                   name="email"
+                  readOnly
                 />
               </div>
               <div className="form-control">

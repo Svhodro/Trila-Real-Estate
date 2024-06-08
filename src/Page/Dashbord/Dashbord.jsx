@@ -47,10 +47,10 @@ const {userdata}=useContext(UserContext)
     <>
       <ul className="flex gap-4 flex-col">
         <li><Link to="/private/dashbord">Profile</Link></li>
-        <li><Link to="">Add Property</Link></li>
-        <li><Link to="">My added properties</Link></li>
-        <li><Link to="">My sold properties</Link></li>
-        <li><Link to="">Requested properties</Link></li>
+        <li><Link to="/private/dashbord/addproperty">Add Property</Link></li>
+        <li><Link to="/private/dashbord/myadded">My added properties</Link></li>
+        <li><Link to="/private/dashbord/sold">My sold properties</Link></li>
+        <li><Link to="/private/dashbord/requested">Requested properties</Link></li>
       </ul>
     </>
   );
@@ -81,7 +81,8 @@ const {userdata}=useContext(UserContext)
                 tabIndex={0}
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                {Normaluser}
+               {userdata.userroll=="user"?Normaluser:<div></div>}
+               {userdata.userroll=="agent"?Agent:<div></div>}
               </ul>
             </div>
           </div>

@@ -1,43 +1,34 @@
-import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
-function Wishlist() {
-  // offer,setoffer
-const {setoffer}=useContext(UserContext)
+function Myadded() {
+  const navigate = useNavigate();
   const [hidden, setHidden] = useState();
   const [data, setData] = useState([]);
-  const vare = JSON.parse(localStorage.getItem("userData"));
+  const { userdata, setupdate } = useContext(UserContext);
   useEffect(() => {
-    try {
-      axios.get("https://trila-backend.vercel.app/allwish").then((res) => {
-        setHidden("hidden");
-        setData(res.data);
-      });
-    } catch (error) {}
+    axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
+      setHidden("hidden");
+      setData(res.data);
+    });
   });
-  const filteredData = data.filter((data) =>
-    data.useremail.toLowerCase().includes(vare.email)
-  );
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <p className="sm:text-2xl pl-2 sm:pl-10 py-6">Wishlist</p>
-      </div>
-      <div>
-        <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
-          {/*   ✅ Product card 1 - Starts Here 👇 */}
-          {filteredData.map((res) => {
-            const handleoffer = () => {
-              setoffer(res);
-            };
-            const handledelete = () => {
-              const data = { id: res._id };
-              axios.delete(
-                `https://trila-backend.vercel.app/deletewish/${res._id}`
-              );
-            };
+      <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
+        {/*   ✅ Product card 1 - Starts Here 👇 */}
+        {data.map((res) => {
+          const handleDelete = () => {
+            axios.delete(
+              `https://trila-backend.vercel.app/deletestate/${res._id}`
+            );
+          };
+          const handleupdate = () => {
+            setupdate(res);
+            navigate('/private/dashbord/update');
+          };
+          if (res.Agentemail == userdata.useremail) {
             return (
               <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                 <a href="#">
@@ -78,25 +69,30 @@ const {setoffer}=useContext(UserContext)
                         status: {res.status}
                       </p>
                     </div>
-                    <div>
-                      <button className="btn" onClick={handleoffer}>
-                        {" "}
-                        <Link to="/private/dashbord/Offer">Make an offer</Link>
-                      </button>
-                    </div>
-                    <div className="my-2">
-                      <button className="btn " onClick={handledelete}>
-                        Remove
+                    <div className="flex justify-start items-center flex-col gap-3">
+                      {res.status == "rejected" ? (
+                        <div></div>
+                      ) : (
+                        <button
+                          className="btn bg-transparent text-black"
+                          onClick={handleupdate}
+                        >
+                          Update
+                        </button>
+                      )}
+                      <button className="btn " onClick={handleDelete}>
+                        Delete
                       </button>
                     </div>
                   </div>
                 </a>
               </div>
             );
-          })}
-        </div>
+          }
+        })}
       </div>
       {/* next section */}
+
       <div
         className={`w-full h-screen flex justify-center items-center ${hidden}`}
       >
@@ -106,4 +102,4 @@ const {setoffer}=useContext(UserContext)
   );
 }
 
-export default Wishlist;
+export default Myadded;
