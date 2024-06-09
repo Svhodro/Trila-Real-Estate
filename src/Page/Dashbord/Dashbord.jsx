@@ -5,7 +5,6 @@ import UserContext from "../../context/UserContext";
 
 function Dashbord() {
 const {userdata}=useContext(UserContext)
-console.log(userdata)
   const Normaluser = (
     <>
       <ul>
@@ -29,16 +28,16 @@ console.log(userdata)
     <>
       <ul>
         <li>
-          <Link>Admin Profile</Link>
+          <Link to='/private/dashbord/dashbord'>Admin Profile</Link>
         </li>
         <li>
-          <Link>Manage Properties</Link>
+          <Link to='/private/dashbord/manageproperty'>Manage Properties</Link>
         </li>
         <li>
-          <Link>Manage Users</Link>
+          <Link to='/private/dashbord/manageuser'>Manage Users</Link>
         </li>
         <li>
-          <Link>Manage reviews</Link>
+          <Link to='/private/dashbord/managereview'>Manage reviews</Link>
         </li>
       </ul>
     </>
@@ -85,6 +84,7 @@ console.log(userdata)
               >
                {userdata.userroll=="user"?Normaluser:<div></div>}
                {userdata.userroll=="agent"?Agent:<div></div>}
+               {userdata.userroll=="admin"?Admin:<div></div>}
               </ul>
             </div>
           </div>

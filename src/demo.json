@@ -7,7 +7,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":"2000-2300"
+        "Pricerange":"2000-2300",
+        "Agentemail":"sporsho@gmail.com"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/1105754/pexels-photo-1105754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -16,7 +17,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":"2000-3000"
+        "Pricerange":"2000-3000",
+        "Agentemail":"sporsho@gmail.com"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/11718917/pexels-photo-11718917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -25,7 +27,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":"2000-3500"
+        "Pricerange":"2000-3500",
+        "Agentemail":"sporsho@gmail.com"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/5524336/pexels-photo-5524336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -34,7 +37,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Price range":"2000-3400"
+        "Price range":"2000-3400",
+        "Agentemail":"sporsho@gmail.com"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/5178060/pexels-photo-5178060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -43,7 +47,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"pending" ,
-        "Pricerange":"2000-3000"
+        "Pricerange":"2000-3000",
+        "Agentemail":""
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/8031878/pexels-photo-8031878.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -52,7 +57,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":"2000-3000"
+        "Pricerange":"2000-3000",
+        "Agentemail":"sporsho@gmail.com"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/13041118/pexels-photo-13041118.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -61,7 +67,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":"2000-3000"
+        "Pricerange":"2000-3000",
+        "Agentemail":"sporsho@gmail.com"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/9951999/pexels-photo-9951999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -70,7 +77,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":"2000-3000"
+        "Pricerange":"2000-3000",
+        "Agentemail":"sporsho@gmail.com"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/12559018/pexels-photo-12559018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -79,7 +87,8 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":"2000-3000"
+        "Pricerange":"2000-3000",
+        "Agentemail":"sporsho@gmail.com"
     },
     {
         "Propertyimage":"https://images.pexels.com/photos/5524237/pexels-photo-5524237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
@@ -88,6 +97,18 @@
         "Agentname":"Sporsho" ,
         "Agentimage":"https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ,
         "status":"verified" ,
-        "Pricerange":"2000-3000"
+        "Pricerange":"2000-3000",
+        "Agentemail":"sporsho@gmail.com"
+    },
+    {
+        "Pricerange":"2000-5000",
+        "Propertylocation":"bangladesh",
+        "Propertyimage":"https://images.pexels.com/photos/1024967/pexels-photo-1024967.jpeg?aut…",
+        "Propertytitle":"resort",
+        "Agentname":"sporsho",
+        "Agentemail":"sporsho@gmail.com",
+        "Agentimage":"https://i.pinimg.com/564x/d4/ac/82/d4ac8217cb0d4e1bdbe3ea1e13207ece.jp…",
+        "status":"verified"
     }
 ]
+

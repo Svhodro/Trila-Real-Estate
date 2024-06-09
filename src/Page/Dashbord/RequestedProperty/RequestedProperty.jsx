@@ -1,8 +1,13 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../../context/UserContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function RequestedProperty() {
+  const notifyaccept = () => toast("Accept  Sucsessfull!");
+  const notifyreject = () => toast("Rejection Sucsessfull!");
   const [hidden, setHidden] = useState();
   const [data, setData] = useState([]);
   const { userdata, setupdate } = useContext(UserContext);
@@ -24,13 +29,19 @@ function RequestedProperty() {
             const data = {
               status: "rejected",
             };
-            axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data);
+            axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data)
+            .then(res=>{
+              notifyreject()
+            })
           };
           const handleaccept = () => {
             const data = {
               status: "accepted",
             };
-            axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data);
+            axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data)
+            .then(res=>{
+              notifyaccept()
+            })
           };
           if ( res.Agentname == userdata.username && res.status=='pending') {
             return (
@@ -102,6 +113,7 @@ function RequestedProperty() {
       >
         <span className="loading loading-ring loading-lg size-56"></span>
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -2,8 +2,11 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ChackpotFrom() {
+  const notify = () => toast("Payment Sucsessfull!");
   const {payment,setpayment} = useContext(UserContext)
   const [Secret,setSecret]=useState()
     const stripe = useStripe();
@@ -20,6 +23,9 @@ function ChackpotFrom() {
         status: "bought",       
       };
       axios.put(`https://trila-backend.vercel.app/updateoffer/${payment._id}`,data)
+      .then(res=>{
+        notify()
+      })
     }
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -80,6 +86,7 @@ function ChackpotFrom() {
       </button>}
       
     </form>
+    <ToastContainer />
     </div>
   );
 }

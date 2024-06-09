@@ -25,6 +25,9 @@ import Update from "./Page/Dashbord/MyAddproperty/update/Update";
 import Payment from "./Page/Payment/Payment";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { query } from "firebase/database";
+import ManageUser from "./Page/Dashbord/ManageUser/ManageUser";
+import ManageReview from "./Page/Dashbord/Managereview/ManageReview";
+import ManageProperty from "./Page/Dashbord/ManageProperty/ManageProperty";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +85,18 @@ const router = createBrowserRouter([
               {
                 path: "update",
                 element: <Update />,
+              },
+              {
+                path: "manageuser",
+                element: <ManageUser />,
+              },
+              {
+                path: "managereview",
+                element: <ManageReview />,
+              },
+              {
+                path: "manageproperty",
+                element: <ManageProperty />,
               },
             ],
           },

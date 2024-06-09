@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UserReview() {
+  const notify = () => toast("Delete  Sucsessfull!");
   const [hidden, setHidden] = useState();
   const [data, setData] = useState([]);  
   const vare = JSON.parse(localStorage.getItem("userData"));
@@ -26,6 +29,9 @@ function UserReview() {
             
             const data={id:res._id}            
             axios.delete(`https://trila-backend.vercel.app/deletereview/${res._id}`)
+            .then(res=>{
+              notify()
+            })
           }
       
         return (
@@ -49,6 +55,7 @@ function UserReview() {
       >
         <span className="loading loading-ring loading-lg size-56"></span>
       </div>
+      <ToastContainer />
     </div>
   );
 }
