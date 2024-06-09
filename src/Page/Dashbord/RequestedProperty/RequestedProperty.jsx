@@ -23,15 +23,15 @@ function RequestedProperty() {
             const data = {
               status: "rejected",
             };
-            axios.put(`http://localhost:5000/updateoffer/${res._id}`, data);
+            axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data);
           };
           const handleaccept = () => {
             const data = {
               status: "accepted",
             };
-            axios.put(`http://localhost:5000/updateoffer/${res._id}`, data);
+            axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data);
           };
-          if (res.Agentname == userdata.username) {
+          if (res.Agentname == userdata.username && res.status=='pending' ) {
             return (
               <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                 <a href="#">

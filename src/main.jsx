@@ -25,6 +25,7 @@ import Myadded from './Page/Dashbord/MyAddproperty/Myadded';
 import Soldproperty from './Page/Dashbord/MysoldProperty/Soldproperty';
 import RequestedProperty from './Page/Dashbord/RequestedProperty/RequestedProperty';
 import Update from './Page/Dashbord/MyAddproperty/update/Update';
+import Payment from './Page/Payment/Payment';
 
 
 
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
             path:"details",
             element:<Details/>
 
+          },
+          {
+            path:'pay',
+            element:<Payment/>
           }
         ]
       },

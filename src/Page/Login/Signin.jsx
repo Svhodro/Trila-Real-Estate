@@ -9,7 +9,8 @@ import UserContext from "../../context/UserContext";
 import app from "../../firebase/firebase";
 
 function Signin() {
-const {user,setuser}=useContext(UserContext)
+
+const {setuser,setuserdata}=useContext(UserContext)
     const navigate = useNavigate()
   const notify = () => toast("User Login  Sucsessfull!");
   const errormassage = () => toast("email or password invalid");
@@ -27,12 +28,13 @@ const {user,setuser}=useContext(UserContext)
 signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
-    const user = userCredential.user;
+    const user = userCredential.user;   
     localStorage.setItem('userData',JSON.stringify(user))
     const data=localStorage.getItem('userData')
     if (data) {
       setuser(true)
     }
+    
     notify()
     navigate('/')
     // ...
@@ -44,6 +46,7 @@ signInWithEmailAndPassword(auth, email, password)
   // old function
   
   }
+
   
   return (
     <div>

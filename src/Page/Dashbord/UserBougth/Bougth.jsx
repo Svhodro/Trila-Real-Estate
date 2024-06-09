@@ -1,10 +1,13 @@
 import { button } from '@material-tailwind/react';
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import UserContext from '../../../context/UserContext';
 
 function Bougth() {
+  const navigate = useNavigate()
   const [hidden, setHidden] = useState();
-  const [pay, setpay] = useState();
+  const {setpayment} = useContext(UserContext)
   const [data, setData] = useState([]);
   const vare = JSON.parse(localStorage.getItem("userData"));
   useEffect(() => {
@@ -30,8 +33,9 @@ function Bougth() {
       <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
         {/*   ✅ Product card 1 - Starts Here 👇 */}
         {filteredData.map((res) => {        
-                 const handleoffer=()=>{
-                  setoffer(res)
+                 const handlepay=()=>{
+                  setpayment(res)
+                  navigate('/private/pay')
                  }
           return (
             <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
@@ -64,7 +68,7 @@ function Bougth() {
                   </div>
                <div>
                 <div>
-                {res.status=='accepted'?<button><Link>Pay</Link></button>:<div></div>}
+                {res.status=='accepted'?<button className='btn' onClick={handlepay}>Pay</button>:<div></div>}
                 </div>
                 
                 

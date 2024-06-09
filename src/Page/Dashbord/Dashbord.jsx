@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { CiMenuFries } from "react-icons/ci";
 import UserContext from "../../context/UserContext";
 
 function Dashbord() {
 const {userdata}=useContext(UserContext)
+
   const Normaluser = (
     <>
       <ul>
