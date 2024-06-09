@@ -19,6 +19,7 @@ function RequestedProperty() {
       <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
         {/*   ✅ Product card 1 - Starts Here 👇 */}
         {data.map((res) => {
+
           const handlereject = () => {
             const data = {
               status: "rejected",
@@ -31,7 +32,7 @@ function RequestedProperty() {
             };
             axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data);
           };
-          if (res.Agentname == userdata.username && res.status=='pending' ) {
+          if ( res.Agentname == userdata.username && res.status=='pending') {
             return (
               <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                 <a href="#">
@@ -68,7 +69,7 @@ function RequestedProperty() {
                       </p>
                     </div>
                     <div className="flex justify-start items-center flex-col gap-3">
-                      {res.status == "pending" ? (
+                      {res.status =='pending' ? (
                         <div className="flex gap-2 w-full">
                           <button
                             className="btn bg-transparent text-black "
