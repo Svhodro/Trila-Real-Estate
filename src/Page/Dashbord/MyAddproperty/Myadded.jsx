@@ -2,18 +2,31 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
+const MyaddedData = async () => {
+  const responce = await fetch("https://trila-backend.vercel.app/allstate");
+  const data = await responce.json();
+  return data;
+};
 
 function Myadded() {
   const navigate = useNavigate();
-  const [hidden, setHidden] = useState();
-  const [data, setData] = useState([]);
   const { userdata, setupdate } = useContext(UserContext);
-  useEffect(() => {
-    axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
-      setHidden("hidden");
-      setData(res.data);
-    });
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["myadded"],
+    queryFn: MyaddedData,
   });
+
+
+  if (isLoading) {
+    return (
+      <div className={`w-full h-screen flex justify-center items-center `}>
+        <span className="loading loading-ring loading-lg size-56"></span>
+      </div>
+    );
+  }
   return (
     <div>
       <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
@@ -26,7 +39,7 @@ function Myadded() {
           };
           const handleupdate = () => {
             setupdate(res);
-            navigate('/private/dashbord/update');
+            navigate("/private/dashbord/update");
           };
           if (res.Agentemail == userdata.useremail) {
             return (
@@ -92,12 +105,6 @@ function Myadded() {
         })}
       </div>
       {/* next section */}
-
-      <div
-        className={`w-full h-screen flex justify-center items-center ${hidden}`}
-      >
-        <span className="loading loading-ring loading-lg size-56"></span>
-      </div>
     </div>
   );
 }

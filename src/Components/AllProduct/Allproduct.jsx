@@ -2,22 +2,26 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
+import { useQuery } from "@tanstack/react-query";
 
+
+const AdvaticeData=async()=>{
+  const responce =await fetch('https://trila-backend.vercel.app/allstate')
+  const data = await responce.json()
+   return data
+ }
 function Allproduct() {
-  const [courentdata, setCorentData] = useState([]);
-  const [data, setData] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [alldata, setalldata] = useState(true);
-  const [hidden, setHidden] = useState();
+
   const navigate = useNavigate();
   const { setdetails } = useContext(UserContext);
-  useEffect(() => {
-   
-    axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
-      setHidden("hidden");
-      setData(res.data);
-    });
-  });
+  const {isLoading,error,data} = useQuery({ queryKey: ['allproperty'], queryFn: AdvaticeData })
+  if (isLoading) {
+    return  <div
+      className={`w-full h-screen flex justify-center items-center`}
+    >
+      <span className="loading loading-ring loading-lg size-56"></span>
+    </div>
+  }
   return (
     <div>      
       <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
@@ -82,14 +86,7 @@ function Allproduct() {
             );
           }
         })}
-      </div>
-      {/* next section */}
-
-      <div
-        className={`w-full h-screen flex justify-center items-center ${hidden}`}
-      >
-        <span className="loading loading-ring loading-lg size-56"></span>
-      </div>
+      </div>    
     </div>
   );
 }

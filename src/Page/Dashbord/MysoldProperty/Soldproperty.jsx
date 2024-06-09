@@ -1,6 +1,6 @@
-import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-import UserContext from '../../../context/UserContext';
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import UserContext from "../../../context/UserContext";
 
 function Soldproperty() {
   const [hidden, setHidden] = useState();
@@ -11,10 +11,13 @@ function Soldproperty() {
       setHidden("hidden");
       setData(res.data);
     });
-  },[]);
+  }, []);
 
-
+  let price = 0;
   return (
+    <div>
+      
+   
     <div>
       <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
         {/*   ✅ Product card 1 - Starts Here 👇 */}
@@ -31,7 +34,9 @@ function Soldproperty() {
             };
             axios.put(`http://localhost:5000/updateoffer/${res._id}`, data);
           };
-          if (res.Agentname == userdata.username && res.status=='bought') {
+          if (res.Agentname == userdata.username && res.status == "bought") {
+            price = price + Number(res.OfferPrice);
+
             return (
               <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                 <a href="#">
@@ -90,9 +95,11 @@ function Soldproperty() {
                   </div>
                 </a>
               </div>
+               
             );
           }
         })}
+       
       </div>
       {/* next section */}
 
@@ -102,8 +109,11 @@ function Soldproperty() {
         <span className="loading loading-ring loading-lg size-56"></span>
       </div>
     </div>
+    <div>
+          <h1 className="text-xl p-2 font-bold"> total sold price:{price}</h1>
+        </div>
+    </div>
   );
-
 }
 
-export default Soldproperty
+export default Soldproperty;

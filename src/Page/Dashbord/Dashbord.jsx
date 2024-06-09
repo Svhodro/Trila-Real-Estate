@@ -5,7 +5,7 @@ import UserContext from "../../context/UserContext";
 
 function Dashbord() {
 const {userdata}=useContext(UserContext)
-
+console.log(userdata)
   const Normaluser = (
     <>
       <ul>
@@ -71,6 +71,7 @@ const {userdata}=useContext(UserContext)
             <div className="font-bold">
              {userdata.userroll=="user"?Normaluser:<div></div>}
              {userdata.userroll=="agent"?Agent:<div></div>}
+             {userdata.userroll=="admin"?Admin:<div></div>}
             </div>
           </div>
           <div className="sm:hidden flex justify-center items-center ">

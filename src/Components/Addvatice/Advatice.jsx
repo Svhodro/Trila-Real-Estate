@@ -6,21 +6,27 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import { useQuery } from "@tanstack/react-query";
+
+const AdvaticeData=async()=>{
+ const responce =await fetch('https://trila-backend.vercel.app/somestate')
+ const data = await responce.json()
+  return data
+}
 
 function Advatice() {
-  const [data, setData] = useState([]);
-  const [courentdata, setCorentData] = useState([]);
-  const [hidden, setHidden] = useState();
+
   const navigate = useNavigate();
   const { setdetails } = useContext(UserContext);
-
-  useEffect(() => {
-   
-    axios.get("https://trila-backend.vercel.app/somestate").then((res) => {
-      setHidden("hidden");
-      setData(res.data);
-    });
-  });
+  const {isLoading,error,data} = useQuery({ queryKey: ['advatice'], queryFn: AdvaticeData })
+ 
+  if (isLoading) {
+    return  <div
+      className={`w-full h-screen flex justify-center items-center`}
+    >
+      <span className="loading loading-ring loading-lg size-56"></span>
+    </div>
+  }
 
   return (
     <div className="w-full ">
@@ -56,7 +62,7 @@ function Advatice() {
               modules={[Pagination]}
               className="mySwiper w-full  flex justify-center items-center"
             >
-        {data.map((res) => {
+        {data.map(res => {
           const handleDetails = () => {
             navigate("/private/details");
             setdetails(res);
@@ -107,15 +113,9 @@ function Advatice() {
         })}
           </Swiper>
       </div>
-
-      {/* next section */}
-
-      <div
-        className={`w-full h-screen flex justify-center items-center ${hidden}`}
-      >
-        <span className="loading loading-ring loading-lg size-56"></span>
-      </div>
     </div>
+  
+    
   );
 }
 
