@@ -10,10 +10,9 @@ function Properties() {
   const [searchQuery, setSearchQuery] = useState("");
   const [alldata, setalldata] = useState(true);
   const [hidden, setHidden] = useState();
-  const { setdetails } = useContext(UserContext);
+  const { setdetails, sort, setSort } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
-
     axios.get("https://trila-backend.vercel.app/allstate").then((res) => {
       setHidden("hidden");
       setData(res.data);
@@ -25,6 +24,23 @@ function Properties() {
   useEffect(() => {
     searchQuery ? setalldata(false) : setalldata(true);
   });
+
+  const handleclicklow = (prop) => {
+    
+    setSort('2000');
+  };
+  const handleclickmid = (prop) => {
+    
+    setSort('3000');
+  };
+  const handleclickhight = (prop) => {
+    
+    setSort('4000');
+  };
+  const handleclicknormal = (prop) => {
+    
+    setSort("all");
+  };
   return (
     <div>
       <div className="px-6 sm:px-16  ">
@@ -48,11 +64,17 @@ function Properties() {
             tabIndex={0}
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <p>$0-$2000 </p>
+            <li onClick={handleclicklow}>
+              <p>From 2000</p>
             </li>
-            <li>
-              <a>$2001-$3000</a>
+            <li onClick={handleclickmid}>
+              <a>From 3000</a>
+            </li>
+            <li onClick={handleclickhight}>
+              <a>From 4000</a>
+            </li>
+            <li onClick={handleclicknormal}>
+              <a>All</a>
             </li>
           </ul>
         </div>
