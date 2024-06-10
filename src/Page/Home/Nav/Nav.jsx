@@ -100,7 +100,7 @@ function Nav() {
             </p>
           </div>
           <div className="login flex flex-col pr-2">
-            {user ? (
+            {vare? (
               <p className="font-bold cursor-pointer" onClick={handleLogout}>
                 LogOut
               </p>
