@@ -87,7 +87,11 @@ function Details() {
     axios
       .post("https://trila-backend.vercel.app/addreview", data)
       .then((res) => {
-        reviewnotish();
+        const data=res.data
+        if (data) {
+          reviewnotish()
+        }
+    
       });
   };
 

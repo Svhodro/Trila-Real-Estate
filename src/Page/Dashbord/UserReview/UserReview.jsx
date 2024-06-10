@@ -30,7 +30,11 @@ function UserReview() {
             const data={id:res._id}            
             axios.delete(`https://trila-backend.vercel.app/deletereview/${res._id}`)
             .then(res=>{
-              notify()
+              const data=res.data
+              if (data) {
+                notify()
+              }
+              
             })
           }
       

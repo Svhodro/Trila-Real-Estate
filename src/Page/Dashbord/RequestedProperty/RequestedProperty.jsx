@@ -31,7 +31,11 @@ function RequestedProperty() {
             };
             axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data)
             .then(res=>{
-              notifyreject()
+              const data=res.data
+              if (data) {
+                notifyreject()
+              }
+              
             })
           };
           const handleaccept = () => {
@@ -40,7 +44,11 @@ function RequestedProperty() {
             };
             axios.put(`https://trila-backend.vercel.app/updateoffer/${res._id}`, data)
             .then(res=>{
-              notifyaccept()
+              const data=res.data
+              if (data) {
+                notifyaccept()
+              }
+              
             })
           };
           if ( res.Agentname == userdata.username && res.status=='pending') {

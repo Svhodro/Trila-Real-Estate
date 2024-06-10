@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../../context/UserContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Soldproperty() {
+  const notifyreject = () => toast("reject Sucsessfull!");
+  const notifyaccept = () => toast("accept Sucsessfull!");
   const [hidden, setHidden] = useState();
   const [data, setData] = useState([]);
   const { userdata, setupdate } = useContext(UserContext);
@@ -26,13 +30,27 @@ function Soldproperty() {
             const data = {
               status: "rejected",
             };
-            axios.put(`http://localhost:5000/updateoffer/${res._id}`, data);
+            axios.put(`http://localhost:5000/updateoffer/${res._id}`, data)
+            .then(res=>{
+              const responce=res.data
+                        if (responce) {
+                          notifyreject();
+                        }
+                     
+            })
           };
           const handleaccept = () => {
             const data = {
               status: "accepted",
             };
-            axios.put(`http://localhost:5000/updateoffer/${res._id}`, data);
+            axios.put(`http://localhost:5000/updateoffer/${res._id}`, data)
+            .then(res=>{
+              const responce=res.data
+                        if (responce) {
+                          notifyaccept();
+                        }
+                     
+            })
           };
           if (res.Agentname == userdata.username && res.status == "bought") {
             price = price + Number(res.OfferPrice);
@@ -99,7 +117,7 @@ function Soldproperty() {
             );
           }
         })}
-       
+         <ToastContainer />
       </div>
       {/* next section */}
 

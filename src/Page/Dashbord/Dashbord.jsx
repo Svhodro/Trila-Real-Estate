@@ -39,6 +39,9 @@ const {userdata}=useContext(UserContext)
         <li>
           <Link to='/private/dashbord/managereview'>Manage reviews</Link>
         </li>
+        <li>
+          <Link to='/private/dashbord/addadvatice'>Advertise property</Link>
+        </li>
       </ul>
     </>
   );

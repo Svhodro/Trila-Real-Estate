@@ -51,6 +51,12 @@ const [alart,setalart]=useState()
           const user = userCredential.user;  
           // ...
           axios.post('https://trila-backend.vercel.app/adduser',fullinfo)
+          .then(res=>{
+            const data=res.data
+            if (data) {
+              notify()
+            }
+          })
         })
         .catch((error) => {
           const errorCode = error.code;

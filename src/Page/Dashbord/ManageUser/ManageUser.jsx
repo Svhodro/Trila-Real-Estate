@@ -41,7 +41,11 @@ function ManageUser() {
           axios
             .put(`https://trila-backend.vercel.app/updateuser/${res._id}`, data)
             .then((res) => {
-              notifyadmin();
+              const responce=res.data
+                if (responce) {
+                  notifyadmin();
+                }
+              
             });
         };
         const handleAgent = () => {
@@ -51,14 +55,22 @@ function ManageUser() {
           axios
             .put(`https://trila-backend.vercel.app/updateuser/${res._id}`, data)
             .then((res) => {
-              notifyagent();
+              const responce=res.data
+                if (responce) {
+                  notifyagent();
+                }
+              
             });
         };
         const handledelete = () => {
           axios
             .delete(`https://trila-backend.vercel.app/deleteuser/${res._id}`)
             .then((res) => {
-              notifydelete();
+              const responce=res.data
+                if (responce) {
+                  notifydelete();
+                }
+             
             });
         };
         return (

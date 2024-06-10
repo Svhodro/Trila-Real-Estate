@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../../../context/UserContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Update() {
+  const notifydelete = () => toast("update Sucsessfull!");
   const { userdata, update } = useContext(UserContext);
   const handleadd = (e) => {
     e.preventDefault();
@@ -19,6 +22,13 @@ function Update() {
       price:pricerange
     };
     axios.put(`https://trila-backend.vercel.app/updatestate/${update._id}`,data)
+    .then(res=>{
+      const responce=res.data
+                if (responce) {
+                  notifydelete();
+                }
+             
+    })
   
     
   };
@@ -114,6 +124,7 @@ function Update() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

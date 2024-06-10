@@ -1,52 +1,54 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import UserContext from "../../../context/UserContext";
+import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Wishlist() {
-  // offer,setoffer
-  const notify = () => toast("Delete  Sucsessfull!");
-const {setoffer}=useContext(UserContext)
-  const [hidden, setHidden] = useState();
-  const [data, setData] = useState([]);
-  const vare = JSON.parse(localStorage.getItem("userData"));
-  useEffect(() => {
-    try {
-      axios.get("https://trila-backend.vercel.app/allwish").then((res) => {
-        setHidden("hidden");
-        setData(res.data);
-      });
-    } catch (error) {}
+const ManageAdvatice = async () => {
+  const responce = await fetch("https://trila-backend.vercel.app/allstate");
+  const data = await responce.json();
+  return data;
+};
+
+function Advertise() {
+  const Advaticee = () => toast("Sucsessfully Added!");
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["ManageAddd"],
+    queryFn: ManageAdvatice,
   });
-  const filteredData = data.filter((data) =>
-    data.useremail.toLowerCase().includes(vare.email)
-  );
+  if (isLoading) {
+    return (
+      <div className={`w-full h-screen flex justify-center items-center`}>
+        <span className="loading loading-ring loading-lg size-56"></span>
+      </div>
+    );
+  }
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <p className="sm:text-2xl pl-2 sm:pl-10 py-6">Wishlist</p>
-      </div>
-      <div>
-        <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
-          {/*   ✅ Product card 1 - Starts Here 👇 */}
-          {filteredData.map((res) => {
-            const handleoffer = () => {
-              setoffer(res);
+      <div className="w-full flex justify-center items-center flex-wrap  gap-4 sm:gap-6">
+        {/*   ✅ Product card 1 - Starts Here 👇 */}
+        {data.map((res) => {
+          const handleAdd = () => {
+            const data = {
+              Propertyimage: res.Propertyimage,
+              Propertytitle: res.Propertytitle,
+              Propertylocation: res.Propertylocation,
+              Agentname: res.Agentname,
+              Agentimage: res.Agentimage,
+              status: res.status,
+              Pricerange: res.Pricerange,
             };
-            const handledelete = () => {
-              const data = { id: res._id };
-              axios.delete(
-                `https://trila-backend.vercel.app/deletewish/${res._id}`
-              )
-              .then(res=>{
-                const data=res.data
+            axios
+              .post("https://trila-backend.vercel.app/addAdvice", data)
+              .then((res) => {
+                const data = res.data;
                 if (data) {
-                  notify()
+                    Advaticee()
                 }
-              })
-            };
+              });
+          };
+          if (res.status == "verified") {
             return (
               <div className="w-48 sm:w-72 bg-white shadow-md  duration-500 hover:scale-105 hover:shadow-xl my-2">
                 <a href="#">
@@ -87,34 +89,24 @@ const {setoffer}=useContext(UserContext)
                         status: {res.status}
                       </p>
                     </div>
-                    <div>
-                      <button className="btn" onClick={handleoffer}>
-                        {" "}
-                        <Link to="/private/dashbord/Offer">Make an offer</Link>
-                      </button>
-                    </div>
-                    <div className="my-2">
-                      <button className="btn " onClick={handledelete}>
-                        Remove
+                    <div className="flex justify-start items-center">
+                      <button
+                        className="btn bg-transparent text-black"
+                        onClick={handleAdd}
+                      >
+                        Advertise
                       </button>
                     </div>
                   </div>
                 </a>
               </div>
             );
-          })}
-        </div>
-        
-      </div>
-      {/* next section */}
-      <div
-        className={`w-full h-screen flex justify-center items-center ${hidden}`}
-      >
-        <span className="loading loading-ring loading-lg size-56"></span>
+          }
+        })}
       </div>
       <ToastContainer />
     </div>
   );
 }
 
-export default Wishlist;
+export default Advertise;

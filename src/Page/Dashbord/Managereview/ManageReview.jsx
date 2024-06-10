@@ -56,9 +56,12 @@ function ManageReview() {
           {data.map((res) => {
             const handleDelete = () => {
               axios.delete(`https://trila-backend.vercel.app/deletereview/${res._id}`)
-              .then((res) => {
-                notify();
-              });
+              .then(res=>{
+                const responce=res.data
+                if (responce) {
+                  notify()
+                }
+              })
             };
 
             return (

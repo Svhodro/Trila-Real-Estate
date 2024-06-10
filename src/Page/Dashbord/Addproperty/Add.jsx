@@ -26,13 +26,17 @@ function Add() {
       status:'pending'
     };
     
-    try {
+   
       axios.post("https://trila-backend.vercel.app/addproperty",data)
-      notify()
+      .then(res=>{
+        const responce=res.data
+        if (responce) {
+          notify()
+        }
+      })
+     
         
-    } catch (error) {
-      console.log(error);
-    }
+    
     // console.log(userdata);
   };
   return (

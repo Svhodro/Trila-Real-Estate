@@ -24,7 +24,11 @@ function ChackpotFrom() {
       };
       axios.put(`https://trila-backend.vercel.app/updateoffer/${payment._id}`,data)
       .then(res=>{
-        notify()
+        const data=res.data
+        if (data) {
+          notify()
+        }
+        
       })
     }
   const handleSubmit = async (event) => {

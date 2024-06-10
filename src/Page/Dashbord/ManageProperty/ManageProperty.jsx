@@ -56,7 +56,11 @@ function ManageProperty() {
               data
             )
             .then((res) => {
-              notifyrejected();
+              const data = res.data;
+                if (data) {
+                  notifyrejected();
+                }
+            
             });
         };
 

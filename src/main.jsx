@@ -28,6 +28,8 @@ import { query } from "firebase/database";
 import ManageUser from "./Page/Dashbord/ManageUser/ManageUser";
 import ManageReview from "./Page/Dashbord/Managereview/ManageReview";
 import ManageProperty from "./Page/Dashbord/ManageProperty/ManageProperty";
+import Advatice from "./Components/Addvatice/Advatice";
+import Advertise from "./Page/Dashbord/Advertise/Advertise";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +100,10 @@ const router = createBrowserRouter([
                 path: "manageproperty",
                 element: <ManageProperty />,
               },
+              {
+                path:"addadvatice",
+                element:<Advertise/>
+              }
             ],
           },
           {

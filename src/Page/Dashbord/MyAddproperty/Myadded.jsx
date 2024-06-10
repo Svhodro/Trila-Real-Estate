@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MyaddedData = async () => {
   const responce = await fetch("https://trila-backend.vercel.app/allstate");
@@ -11,6 +13,7 @@ const MyaddedData = async () => {
 };
 
 function Myadded() {
+  const notifydelete = () => toast("Delete Sucsessfull!");
   const navigate = useNavigate();
   const { userdata, setupdate } = useContext(UserContext);
 
@@ -35,7 +38,13 @@ function Myadded() {
           const handleDelete = () => {
             axios.delete(
               `https://trila-backend.vercel.app/deletestate/${res._id}`
-            );
+            )
+            .then(res=>{
+              const responce=res.data
+              if (responce) {
+                notifydelete();
+              }
+            })
           };
           const handleupdate = () => {
             setupdate(res);
@@ -105,6 +114,7 @@ function Myadded() {
         })}
       </div>
       {/* next section */}
+      <ToastContainer />
     </div>
   );
 }

@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../../context/UserContext";
 import { MdFormatListNumbered } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Offer() {
+  const notifyoffer = () => toast("Offer Sucsessfull!");
   const { offer, userdata } = useContext(UserContext);
   const [offerprice, setofferprice] = useState();
   const [date, setdate] = useState();
@@ -39,7 +42,12 @@ function Offer() {
       try {
         axios
           .post("https://trila-backend.vercel.app/addoffer",data)
-          .then((res) => {});
+          .then((res) => {
+            const data=res.data
+            if (data) {
+              notifyoffer()
+            }
+          });
       } catch (error) {
         console.log(error);
       }
@@ -149,6 +157,7 @@ function Offer() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
