@@ -21,7 +21,7 @@ function Home() {
         <Advatice />
         <Team />
         <div>
-          <div className="diff aspect-[16/9] h-[200px]">
+          <div className="diff aspect-[16/9] h-[400px]">
             <div className="diff-item-1">
               <img
                 alt="daisy"
