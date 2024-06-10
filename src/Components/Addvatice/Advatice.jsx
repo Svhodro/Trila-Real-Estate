@@ -9,7 +9,7 @@ import { Pagination } from "swiper/modules";
 import { useQuery } from "@tanstack/react-query";
 
 const AdvaticeData=async()=>{
- const responce =await fetch('https://trila-backend.vercel.app/somestate')
+ const responce =await fetch('https://trila-backend.vercel.app/Advatice')
  const data = await responce.json()
   return data
 }

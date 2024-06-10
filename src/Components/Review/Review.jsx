@@ -1,15 +1,24 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+const reviewData=async()=>{
+  const responce =await fetch('https://trila-backend.vercel.app/latestreview')
+  const data = await responce.json()
+   return data
+ }
+
 function Review() {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    axios.get("https://trila-backend.vercel.app/latestreview").then((res) => {
-      setData(res.data);
-    });
-  });
+  const {isLoading,error,data} = useQuery({ queryKey: ['reviewproperty'], queryFn: reviewData })
   
 
+  if (isLoading) {
+    return  <div
+      className={`w-full h-screen flex justify-center items-center`}
+    >
+      <span className="loading loading-ring loading-lg size-56"></span>
+    </div>
+  }
 
   return (
     <div className="my-4">
