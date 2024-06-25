@@ -38,18 +38,22 @@ function Nav() {
   const [data, setData] = useState([]);
   const [userinfo, setuserinfo] = useState([]);
   useEffect(() => {
+    return()=>{
+      axios.get("https://trila-backend.vercel.app/user").then((res) => {
+        setData(res.data);
+        data.map((res) => {
+          if (vare?.email == res.useremail) {
+            setuserinfo(res);
+            setuserdata(res);
+            setroll(res.userroll);
+          }
+        });
+      });
+  
+    }
    
-    axios.get("https://trila-backend.vercel.app/user").then((res) => {
-      setData(res.data);
-    });
-
-    data.map((res) => {
-      if (vare?.email == res.useremail) {
-        setuserinfo(res);
-        setuserdata(res);
-        setroll(res.userroll);
-      }
-    });
+   
+   
   });
 
   return (
