@@ -4,7 +4,7 @@
 - You can make offer you price for property
 - you can request property to sale
 ## live link : https://trila-real-estate.vercel.app/
-# Project tecnology's
+# Project  technology's
 -- Frontend
 - React js
 - Context api
