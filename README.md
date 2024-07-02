@@ -17,7 +17,7 @@
 - Express js
 - MongoDB
 
- #How to run localHost  
+ # How to run localHost  
  - clone the repogitory
  - then open in code editor and open terminal
  - then run-> npm install
