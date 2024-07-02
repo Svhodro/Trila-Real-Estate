@@ -1,21 +1,21 @@
 # Trila The realestate web site to sale and buy property
 ## Fetarts
-- The site have give low price and good quality propertis
+- The site have give low price and good quality property's
 - You can make offer you price for property
 - you can request property to sale
 ## live link : https://trila-real-estate.vercel.app/
 # Project tecnology's
 -- Frontend
-- react js
-- context api
-- tailwind css
+- React js
+- Context api
+- Tailwind css
  
 -- Backend
   
-- firebase authentication
-- nodejs
-- express js
-- mongoDB
+- Firebase authentication
+- Nodejs
+- Express js
+- MongoDB
 
  #How to run localHost  
  - clone the repogitory
